@@ -39,7 +39,7 @@ class Main extends PluginBase{
         }
         if(($plugin = $this->getServer()->getPluginManager()->getPlugin('FormAPI')) !== null){
             $this->formAPIInstance = $plugin;
-            $this->getLogger()->notice('FormAPI detected. Activated kit selection UI support');
+            $this->getLogger()->notice('FormAPI detected. Activated gkit selection UI support');
         }
         $this->saveDefaultConfig();
         $this->loadKits();
@@ -72,7 +72,7 @@ class Main extends PluginBase{
                     return true;
                 }
                 if(!isset($args[0])){
-                    $gkits = (bool)$this->getConfig()->get('hide-no-perm-kits', false) ? array_filter($this->gkits, function (gKit $gkit) use($sender){return $gkit->testPermission($sender);}) : $this->kits;
+                    $gkits = (bool)$this->getConfig()->get('hide-no-perm-gkits', false) ? array_filter($this->gkits, function (gKit $gkit) use($sender){return $gkit->testPermission($sender);}) : $this->gkits;
                     if($this->formAPIInstance === null){
                         $sender->sendMessage($this->langManager->getTranslation('av-kits', implode(', ', array_keys($kits))));
                     }else{
