@@ -9,8 +9,8 @@ softdepend: [PurePerms, PiggyCustomEnchants, FormAPI]
 commands:
  gkit:
   description: claim a gkit
-  usage: "/kit <kitName>"
-  aliases: [staffgkitthingy, gkit]
+  usage: "/gkit <kitName>"
+  aliases: [staffgkitthingy]
   permission: advancedkits.command
  akreload:
   descrpition: Reload Kits settings
