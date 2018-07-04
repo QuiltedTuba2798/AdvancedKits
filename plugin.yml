@@ -7,10 +7,10 @@ description: Add kits to your server
 website: https://github.com/luca28pet/AdvancedKits
 softdepend: [PurePerms, PiggyCustomEnchants, FormAPI]
 commands:
- kit:
-  description: Get a kit!
+ gkit:
+  description: claim a gkit
   usage: "/kit <kitName>"
-  aliases: [ak, advancedkits]
+  aliases: [staffgkitthingy, gkit]
   permission: advancedkits.command
  akreload:
   descrpition: Reload Kits settings
