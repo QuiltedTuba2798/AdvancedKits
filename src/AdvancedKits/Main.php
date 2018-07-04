@@ -12,8 +12,8 @@ use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase{
 
-    /** @var Kit[] */
-    public $kits = [];
+    /** @var gKit[] */
+    public $gkits = [];
     /** @var string[] */
     public $hasKit = [];
     /** @var EconomyManager */
@@ -56,23 +56,23 @@ class Main extends PluginBase{
     }
 
     public function onDisable() : void{
-        foreach($this->kits as $kit){
-            $kit->save();
+        foreach($this->gkits as $gkit){
+            $gkit->save();
         }
-        $this->kits = [];
+        $this->gkits = [];
         $this->piggyCustomEnchantsInstance = null;
         $this->formAPIInstance = null;
     }
 
     public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
         switch(strtolower($command->getName())){
-            case 'kit':
+            case 'gkit':
                 if(!($sender instanceof Player)){
                     $sender->sendMessage($this->langManager->getTranslation('in-game'));
                     return true;
                 }
                 if(!isset($args[0])){
-                    $kits = (bool)$this->getConfig()->get('hide-no-perm-kits', false) ? array_filter($this->kits, function (Kit $kit) use($sender){return $kit->testPermission($sender);}) : $this->kits;
+                    $gkits = (bool)$this->getConfig()->get('hide-no-perm-kits', false) ? array_filter($this->gkits, function (gKit $gkit) use($sender){return $gkit->testPermission($sender);}) : $this->kits;
                     if($this->formAPIInstance === null){
                         $sender->sendMessage($this->langManager->getTranslation('av-kits', implode(', ', array_keys($kits))));
                     }else{
